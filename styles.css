@@ -1,4 +1,29 @@
-.book>* {
-    border: red solid;
+.Hidden {
+    color: white;
+    background-color: white;
+    height: 0px;
+    width: 0px;
+    border: none;
 }
 
+.book {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    gap: 10px
+}
+.book > * {
+    /* border: gray solid; */
+    /* background-color: gray; */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    padding: 2px 16px;
+}
+
+
+.newBook {
+    margin-left: 40%;
+    
+    /* border: red solid; */
+}
+.newBook > * {
+    margin: 2px;
+}
