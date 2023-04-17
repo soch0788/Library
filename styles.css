@@ -27,3 +27,10 @@
 .newBook > * {
     margin: 2px;
 }
+.hiddenBook {
+    color: white;
+    background-color: white;
+    height: 0px;
+    width: 0px;
+    border: none;
+}
