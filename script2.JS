@@ -31,16 +31,13 @@ function bookBTN() {
     let BTNchecker = document.querySelector(".Submit")
     if(!BTNchecker){ 
         let newBTN = document.createElement('button')
+        let backBTN = document.createElement('button')
         let newBookTitle = document.createElement('input')
         let newBookAuthor = document.createElement('input')
         let newBookPagecount = document.createElement('input')
         let newBookstatusDec = document.createElement('label')
-        let newBookstatus = document.createElement('input')
+
         
-        newBookstatusDec.textContent = "Read"
-        newBookstatus.type = "checkbox"
-        newBookstatus.value = "Read"
-        newBookstatus.className = "checkstatus"
         newBookTitle.className = "newTitle"
         newBookTitle.placeholder = "Book Title"
         newBookTitle.required = "required"
@@ -54,6 +51,8 @@ function bookBTN() {
 
         newBTN.textContent = "Submit Book"
         newBTN.className = "Submit"
+        backBTN.textContent = "Back"
+
         
         bookAddDiv.appendChild(newBookTitle)
         bookAddDiv.appendChild(document.createElement('br'))
@@ -61,14 +60,13 @@ function bookBTN() {
         bookAddDiv.appendChild(document.createElement('br'))
         bookAddDiv.appendChild(newBookPagecount)
         bookAddDiv.appendChild(document.createElement('br'))
-        bookAddDiv.appendChild(newBookstatus)
-        bookAddDiv.appendChild(newBookstatusDec)
-        bookAddDiv.appendChild(document.createElement('br'))
-        
+
         bookAddDiv.appendChild(newBTN)
+        bookAddDiv.appendChild(backBTN)
         
         const addBook = document.querySelector(".Submit")
-        addBook.addEventListener("click", addBooks) 
+        addBook.addEventListener("click", addBooks)
+        backBTN.addEventListener("click", showbooks)  
     }
 }
 function showbooks (){
@@ -85,7 +83,7 @@ function showbooks (){
         removeBTN.classList.add(`remove${i}`)
         removeBTN.classList.add(`removeButton`)
         readStatuschanger.id = `${i}`
-        readStatuschanger.textContent = "Finished"
+        
         removeBTN.textContent = "remove book"
         let bookgroup = document.createElement("div")
         bookgroup.classList.add(i)
@@ -94,7 +92,24 @@ function showbooks (){
         bookgroup.appendChild(readStatuschanger)
         bookgroup.appendChild(removeBTN)
         bookDiv.appendChild(bookgroup)
+        readStatuschanger.textContent = "Finished"
+        let grabber = document.querySelector(`.bookCard${i}>div>h2`)
+        let readstatusformat = document.querySelector(`.bookCard${i}`)
+        let btngrab = document.querySelector(`.statuschange${i}`)
+        if(grabber.textContent == "Unread"){
+            btngrab.textContent = "Finished"
+            readstatusformat.classList.remove("Read")
+        }
+        else if(grabber.textContent == "Read") {
+            btngrab.textContent = "Didn't Finsh"
+            readstatusformat.classList.add("Read")
+        }
     }
+
+
+
+
+
         let statuschangers = document.querySelectorAll(".statuschange")
         statuschangers.forEach(a=> a.addEventListener("click",changeReadStatus))
 
@@ -110,28 +125,30 @@ function removeBook () {
     bookList.splice(k,1)
     bookBTN()
     showbooks()
-    // bookList = tempList
 }
 
 
 function changeReadStatus() {
     let j = this.id
     let grabber = document.querySelector(`.bookCard${j}>div>h2`)
-    if(grabber.textContent == "unread"){
-        grabber.textContent = "read"
+    let readstatusformat = document.querySelector(`.bookCard${j}`)
+    let btngrab = document.querySelector(`.statuschange${j}`)
+    if(grabber.textContent == "Unread"){
+        grabber.textContent = "Read"
+        btngrab.textContent = "Didn't Finish"
+        readstatusformat.classList.add("Read")
     }
-    else if(grabber.textContent == "read") {
-        grabber.textContent = "unread"
+    else if(grabber.textContent == "Read") {
+        grabber.textContent = "Unread"
+        btngrab.textContent = "Finished"
+        readstatusformat.classList.remove("Read")
     }
 }
 
 
 function addBooks(){
     if(document.querySelector(".newTitle").value != "" && document.querySelector(".newAuthor").value != "" && document.querySelector(".newpage").value != "" ){
-    let readstatus = "unread"
-    if(document.querySelector(".checkstatus").checked == true){
-        readstatus = "read"
-    }
+    let readstatus = "Unread"
     let book = new newTitle(document.querySelector(".newTitle").value,document.querySelector(".newAuthor").value,document.querySelector(".newpage").value,readstatus)
     let newtitle = document.createElement('h1')
     let newauthor = document.createElement('h1')

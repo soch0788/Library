@@ -16,6 +16,7 @@
     /* background-color: gray; */
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     padding: 2px 16px;
+    margin-bottom: 20px;
 }
 
 
@@ -27,10 +28,16 @@
 .newBook > * {
     margin: 2px;
 }
-.hiddenBook {
-    color: white;
-    background-color: white;
-    height: 0px;
-    width: 0px;
-    border: none;
+.Read {
+    
+    background-color: lightgreen;
+    
+    
+    
 }
+
+/* #addBook {
+    position: absolute;
+    bottom: 5%;
+    right: 5%;
+} */
