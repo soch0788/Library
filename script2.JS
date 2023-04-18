@@ -35,7 +35,7 @@ function bookBTN() {
         let newBookTitle = document.createElement('input')
         let newBookAuthor = document.createElement('input')
         let newBookPagecount = document.createElement('input')
-        let newBookstatusDec = document.createElement('label')
+
 
         
         newBookTitle.className = "newTitle"

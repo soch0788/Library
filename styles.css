@@ -1,6 +1,6 @@
 .Hidden {
-    color: white;
-    background-color: white;
+    color: 4b709e;
+    background-color: 4b709e;
     height: 0px;
     width: 0px;
     border: none;
@@ -8,7 +8,7 @@
 
 .book {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
     gap: 10px
 }
 .book > * {
@@ -17,11 +17,12 @@
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     padding: 2px 16px;
     margin-bottom: 20px;
+    background-color: rgb(170, 97, 97);
 }
 
 
 .newBook {
-    margin-left: 40%;
+    text-align: center;
     
     /* border: red solid; */
 }
@@ -30,14 +31,28 @@
 }
 .Read {
     
-    background-color: lightgreen;
+    background-color: rgb(79, 165, 79);
     
     
     
 }
+.title, .subtitle{
+    text-align: center;
+}
+
+#addBook {
+    margin-left: 50%;
+    /* width: 10%; */
+}
+
+
 
 /* #addBook {
     position: absolute;
     bottom: 5%;
     right: 5%;
 } */
+
+body {
+    background-color: #4b709e;
+}
